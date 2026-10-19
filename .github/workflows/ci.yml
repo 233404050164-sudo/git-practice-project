@@ -1,0 +1,38 @@
+name: Node.js CI/CD Pipeline
+
+# 1. EVENT: Kích hoạt khi có commit push hoặc pull request vào nhánh main
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+jobs:
+  # 2. JOB: Đặt tên cho tiến trình
+  test-and-build:
+    # 3. RUNNER: Chạy trên máy ảo Ubuntu mới nhất
+    runs-on: ubuntu-latest
+
+    # 4. STEPS: Các bước thực hiện tuần tự
+    steps:
+      # Bước 4.1: Kéo mã nguồn từ GitHub về máy ảo
+      - name: Checkout mã nguồn
+        uses: actions/checkout@v4
+
+      # Bước 4.2: Cài đặt môi trường Node.js phiên bản 20
+      - name: Cài đặt Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '20'
+
+      # Bước 4.3: Cài đặt các thư viện phụ thuộc (Dependencies)
+      - name: Cài đặt Dependencies
+        run: npm install
+
+      # Bước 4.4: Tự động chạy Unit Test (CI - Continuous Integration)
+      - name: Chạy tự động kiểm thử (Run Tests)
+        run: npm test
+
+      # Bước 4.5: Tự động Build sản phẩm (CD - Continuous Delivery)
+      - name: Đóng gói ứng dụng (Run Build)
+        run: npm run build
