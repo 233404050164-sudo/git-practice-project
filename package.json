@@ -1,0 +1,26 @@
+{
+  "name": "git-practice-project",
+  "version": "1.0.0",
+  "description": "Test fetch pull",
+  "main": "index.js",
+  "scripts": {
+    "test": "node math.test.js",
+    "build": "mkdir -p dist && cp index.html dist/ && echo 'Build thành công!'",
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/233404050164-sudo/git-practice-project.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/233404050164-sudo/git-practice-project/issues"
+  },
+  "homepage": "https://github.com/233404050164-sudo/git-practice-project#readme",
+  "dependencies": {
+    "express": "^5.3.0"
+  }
+}
